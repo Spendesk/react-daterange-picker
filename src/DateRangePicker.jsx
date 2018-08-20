@@ -54,6 +54,7 @@ const DateRangePicker = createClass({
     onSelect: PropTypes.func, // triggered when a date or range is selectec
     onSelectStart: PropTypes.func, // triggered when the first date in a range is selected
     paginationArrowComponent: PropTypes.func,
+    bottomActionComponent: PropTypes.func,
     selectedLabel: PropTypes.string,
     selectionType: PropTypes.oneOf(['single', 'range']),
     singleDateRange: PropTypes.bool,
@@ -531,7 +532,7 @@ const DateRangePicker = createClass({
   },
 
   render: function() {
-    let {paginationArrowComponent: PaginationArrowComponent, className, numberOfCalendars, stateDefinitions, selectedLabel, showLegend, helpMessage} = this.props;
+    let {paginationArrowComponent: PaginationArrowComponent, bottomActionComponent: BottomActionComponent, className, numberOfCalendars, stateDefinitions, selectedLabel, showLegend, helpMessage} = this.props;
 
     let calendars = Immutable.Range(0, numberOfCalendars).map(this.renderCalendar);
     className = this.cx({element: null}) + ' ' + className;
@@ -543,6 +544,7 @@ const DateRangePicker = createClass({
         <PaginationArrowComponent direction="next" onTrigger={this.moveForward} disabled={!this.canMoveForward()} />
         {helpMessage ? <span className={this.cx({element: 'HelpMessage'})}>{helpMessage}</span> : null}
         {showLegend ? <Legend stateDefinitions={stateDefinitions} selectedLabel={selectedLabel} /> : null}
+        {BottomActionComponent ? <BottomActionComponent /> : null}
       </div>
     );
   },
