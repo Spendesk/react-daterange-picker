@@ -102,6 +102,7 @@ var DateRangePicker = (0, _createReactClass2.default)({
     onSelect: _propTypes2.default.func, // triggered when a date or range is selectec
     onSelectStart: _propTypes2.default.func, // triggered when the first date in a range is selected
     paginationArrowComponent: _propTypes2.default.func,
+    bottomActionComponent: _propTypes2.default.func,
     selectedLabel: _propTypes2.default.string,
     selectionType: _propTypes2.default.oneOf(['single', 'range']),
     singleDateRange: _propTypes2.default.bool,
@@ -584,6 +585,7 @@ var DateRangePicker = (0, _createReactClass2.default)({
   render: function render() {
     var _props3 = this.props,
         PaginationArrowComponent = _props3.paginationArrowComponent,
+        BottomActionComponent = _props3.bottomActionComponent,
         className = _props3.className,
         numberOfCalendars = _props3.numberOfCalendars,
         stateDefinitions = _props3.stateDefinitions,
@@ -606,7 +608,8 @@ var DateRangePicker = (0, _createReactClass2.default)({
         { className: this.cx({ element: 'HelpMessage' }) },
         helpMessage
       ) : null,
-      showLegend ? _react2.default.createElement(_Legend2.default, { stateDefinitions: stateDefinitions, selectedLabel: selectedLabel }) : null
+      showLegend ? _react2.default.createElement(_Legend2.default, { stateDefinitions: stateDefinitions, selectedLabel: selectedLabel }) : null,
+      BottomActionComponent ? _react2.default.createElement(BottomActionComponent, null) : null
     );
   }
 });
